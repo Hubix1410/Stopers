@@ -1,0 +1,15 @@
+.Form-Section{
+    width:450px;
+    background-color: grey;
+    height:100vh;
+
+    > h1{
+        text-align: center;
+    }
+
+    > form{
+        display: flex;
+        flex-direction: column;  
+    }
+
+}
