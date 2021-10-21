@@ -12,7 +12,8 @@ export function FormSection({stoperArray, setStoperArray}) {
         currentDate.getDate(), 
         currentDate.getMonth() + 1, 
         currentDate.getHours(),
-        currentDate.getMinutes())
+        currentDate.getMinutes(),
+        currentDate.getSeconds())
 
     const [newName, setNewName] = useState("task")
     const [newDate, setNewDate] = useState(undefined)
