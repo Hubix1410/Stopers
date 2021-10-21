@@ -3,43 +3,26 @@ import "./formSection.scss";
 
 export function FormSection({stoperArray, setStoperArray}) {
 
-    console.log(stoperArray);
-
-    const currentDate = new Date();
-
-    console.log(
-        currentDate.getFullYear(),
-        currentDate.getDate(), 
-        currentDate.getMonth() + 1, 
-        currentDate.getHours(),
-        currentDate.getMinutes(),
-        currentDate.getSeconds())
-
     const [newName, setNewName] = useState("task")
     const [newDate, setNewDate] = useState(undefined)
     const [newTime, setNewTime] = useState(undefined)
 
     function validateName(element) {
         setNewName(element.target.value);
-        console.log(element.target.value);
     }
 
     function validateDate(element) {
         setNewDate(element.target.value);
-        console.log(element.target.value);
-        console.log(typeof(element.target.value));
     }
 
     function validateTime(element) {
         setNewTime(element.target.value);
-        console.log(element.target.value);
-        console.log(typeof(element.target.value));
     }
 
     function createNewStoper(element){
         element.preventDefault();
 
-        let newStoper = [...stoperArray, [newName, newDate, newTime]]
+        let newStoper = [...stoperArray, [newName, newDate, newTime, ""]]
         setStoperArray(newStoper);
     }
 
