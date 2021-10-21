@@ -1,5 +1,19 @@
 .Stoper-Section{
-    width: calc(100vw - 450px);
+    width: calc(100vw - 500px);
     height:100vh;
-    background-color: bisque;
+    background-color: white;
+    display:flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    overflow: auto;
+
+    .Stoper-Article{
+        width:300px;
+        height:300px;
+        box-sizing: border-box;
+        border:3px solid red;
+        border-radius: 24px;
+        margin: 30px;
+        padding:10px;
+    }
 }
