@@ -1,17 +1,24 @@
+$mainBgc: #292929;
+$secondaryBgc: #1E1E1E;
+$mainDecoration: #BB86FC;
+$mainText: #FCFCFC;
+
 .Stoper-Section{
     width: calc(100vw - 500px);
     height:100vh;
-    background-color: white;
+    background-color: $mainBgc;
     display:flex;
     flex-wrap: wrap;
     align-items: flex-start;
     overflow: auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 
     .Stoper-Article{
-        width:300px;
+        width:320px;
         height:180px;
         box-sizing: border-box;
-        border:3px solid red;
+        border:3px solid $mainDecoration;
+        color:$mainText;
         border-radius: 24px;
         margin: 30px;
         padding:10px;

@@ -1,14 +1,17 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc, getFirestore, getDoc } from "firebase/firestore"; 
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import "./loginPage.scss";
 
-export function LoginPage() {
+export function LoginPage({ stoperArray, setStoperArray, user, setUser }) {
 
     const [email, SetEmail] = useState("");
     const [pass, SetPass] = useState("");
+
+    let history = useHistory();
 
     const firebaseConfig = {
         apiKey: "AIzaSyAh-25ZP7QHPNBmz6V90xjtm2EqENpk5RQ",
@@ -35,13 +38,25 @@ export function LoginPage() {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, pass)
             .then((userCredential) => {
-                const user = userCredential.user;
-                let history = useHistory()
+
+                const user1 = userCredential.user;
+
+                const db = getFirestore();
+
+                getDoc(doc(db, "stopers", user1.uid))
+                .then((response)=>{
+                    let response1 = response.data().stoper;
+                    setStoperArray([...response1]);
+                })
+
+                setUser(userCredential.user);
+
+                history.push("/main");
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                alert(errorMessage);
+                alert(errorMessage, errorCode);
             });
     }
 
@@ -52,7 +67,7 @@ export function LoginPage() {
                 <h1>Your<span>Time</span></h1>
                 <form>
                     <input type="email" placeholder="email" onChange={emailValidation} value={email} />
-                    <input type="text" placeholder="password" onChange={passValidation} value={pass} />
+                    <input type="password" placeholder="password" onChange={passValidation} value={pass} />
                     <input type="submit" className="loginButton" value="login" onClick={login} />
                 </form>
             </div>

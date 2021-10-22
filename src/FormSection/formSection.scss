@@ -1,15 +1,65 @@
+$mainBgc: #292929;
+$secondaryBgc: #1E1E1E;
+$mainDecoration: #BB86FC;
+$mainText: #FCFCFC;
+
 .Form-Section{
     width:500px;
-    background-color: grey;
+    background-color: $secondaryBgc;
     height:100vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-right: 1px solid $mainDecoration;
 
     > h1{
         text-align: center;
+        color: $mainText;
+        font-size: 42px;
+        margin:40px 0 20px 0;
+
+        span{
+            color:#BB86FC;
+        }
     }
 
     > form{
         display: flex;
-        flex-direction: column;  
+        flex-direction: column;
+        padding:20px;  
+
+        input{
+            margin: 10px;
+            padding:8px;
+            font-size: 20px;
+            outline: none;
+            border:1px solid $mainText;
+            background-color: transparent;
+
+            color:$mainText;
+
+            &:focus{
+                border:1px solid $mainDecoration;  
+            }
+        }
+        .buttons{
+            display:flex;
+            button{
+                background-color: transparent;
+                box-sizing: border-box;
+                width:150px;
+                height:50px;
+                outline: none;
+                color:$mainText;
+                border: 1px solid $mainText;
+                margin: 10px;
+                font-size: 24px;
+
+                &:hover{
+                    cursor: pointer;
+                    border:  1px solid $mainDecoration;
+                    color: $mainDecoration
+                }
+            }
+        }
     }
 
 }

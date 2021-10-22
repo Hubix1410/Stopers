@@ -1,17 +1,18 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc, getFirestore, getDoc } from "firebase/firestore";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import "./registerPage.scss"
 
-export function RegisterPage() {
+export function RegisterPage({ stoperArray, setStoperArray, user, setUser }) {
 
     const [email, SetEmail] = useState("");
     const [pass, SetPass] = useState("");
     const [passRepeat, SetPassRepeat] = useState("");
 
-    let history = useHistory()
+    let history = useHistory();
 
     const firebaseConfig = {
         apiKey: "AIzaSyAh-25ZP7QHPNBmz6V90xjtm2EqENpk5RQ",
@@ -23,6 +24,7 @@ export function RegisterPage() {
     };
 
     const app = initializeApp(firebaseConfig);
+    const db = getFirestore();
 
     function emailValidation(element) {
         SetEmail(element.target.value);
@@ -48,7 +50,22 @@ export function RegisterPage() {
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, pass)
             .then((userCredential) => {
-                const user = userCredential.user;
+                const user1 = userCredential.user;
+
+                setUser(userCredential.user);
+
+                const db = getFirestore();
+                const docRef = doc(db, "stopers", user.uid);
+
+                setDoc(doc(db, "stopers", user1.uid), {
+                    stoper: []
+                });
+
+                getDoc(docRef)
+                    .then((response) => {
+                        setStoperArray(response.data());
+                    })
+
                 history.push("/main");
             })
             .catch((error) => {
@@ -63,10 +80,10 @@ export function RegisterPage() {
             <div className="Register-Div">
                 <h1>Your<span>Time</span></h1>
                 <form>
-                    <input type="email" value={email} onChange={emailValidation} placeholder="email"/>
-                    <input type="password" value={pass} onChange={passValidation} placeholder="password"/>
-                    <input type="password" value={passRepeat} onChange={passRepeatValidation} placeholder="password"/>
-                    <input type="submit" onClick={register} className="registerButton" value="Register"/>
+                    <input type="email" value={email} onChange={emailValidation} placeholder="email" />
+                    <input type="password" value={pass} onChange={passValidation} placeholder="password" />
+                    <input type="password" value={passRepeat} onChange={passRepeatValidation} placeholder="password" />
+                    <input type="submit" onClick={register} className="registerButton" value="Register" />
                 </form>
             </div>
 
