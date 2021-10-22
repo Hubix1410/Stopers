@@ -54,18 +54,6 @@ export function RegisterPage({ stoperArray, setStoperArray, user, setUser }) {
 
                 setUser(userCredential.user);
 
-                const db = getFirestore();
-                const docRef = doc(db, "stopers", user.uid);
-
-                setDoc(doc(db, "stopers", user1.uid), {
-                    stoper: []
-                });
-
-                getDoc(docRef)
-                    .then((response) => {
-                        setStoperArray(response.data());
-                    })
-
                 history.push("/main");
             })
             .catch((error) => {

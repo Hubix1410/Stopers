@@ -15,12 +15,29 @@ $mainText: #FCFCFC;
 
     .Stoper-Article{
         width:320px;
-        height:180px;
+        height:200px;
         box-sizing: border-box;
         border:3px solid $mainDecoration;
         color:$mainText;
         border-radius: 24px;
         margin: 30px;
         padding:10px;
+
+        button{
+            background-color: transparent;
+            box-sizing: border-box;
+            width:120px;
+            height:40px;
+            outline: none;
+            color:$mainText;
+            border: 1px solid $mainText;
+            font-size: 16px;
+
+            &:hover{
+                cursor: pointer;
+                border:  1px solid $mainDecoration;
+                color: $mainDecoration
+            }
+        }
     }
 }
