@@ -1,0 +1,75 @@
+$mainBgc: #292929;
+$secondaryBgc: #1E1E1E;
+$mainDecoration: #BB86FC;
+$mainText: #FCFCFC;
+
+.Login-Page{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    background-color: $secondaryBgc;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    .Login-Div{
+        width:300px;
+        height:500px;
+        background-color: $mainBgc;
+        border-radius: 12px;
+
+        h1{
+            text-align: center;
+            color:$mainText;
+            font-size: 48px;
+            margin:25px;
+
+            span{
+                color: $mainDecoration;
+            }
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height:300px;
+
+            input{
+                margin: 10px;
+                padding:8px;
+                font-size: 20px;
+                outline: none;
+                border:1px solid $mainText;
+                background-color: transparent;
+
+                color:$mainText;
+
+                &:focus{
+                    border:1px solid $mainDecoration;  
+                }
+
+                .loginButton:hover{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .Login-To-Register{
+        width:300px;
+        height:80px;
+        margin-top: 20px;
+        border-radius: 12px;
+        background-color: $mainBgc;
+
+        color: $mainText;
+        font-size: 14px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

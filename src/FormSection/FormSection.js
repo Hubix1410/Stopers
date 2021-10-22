@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./formSection.scss";
 
 export function FormSection({stoperArray, setStoperArray}) {
+
+    useEffect(() => {
+        window.clearInterval();
+    })
 
     const [newName, setNewName] = useState("task")
     const [newDate, setNewDate] = useState(undefined)
@@ -22,7 +26,7 @@ export function FormSection({stoperArray, setStoperArray}) {
     function createNewStoper(element){
         element.preventDefault();
 
-        let newStoper = [...stoperArray, [newName, newDate, newTime, ""]]
+        let newStoper = [...stoperArray, [newName, newDate, newTime]]
         setStoperArray(newStoper);
     }
 
