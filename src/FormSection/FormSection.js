@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./formSection.scss";
 
 export function FormSection({ stoperArray, setStoperArray, user }) {
@@ -35,6 +35,11 @@ export function FormSection({ stoperArray, setStoperArray, user }) {
     function createNewStoper(element) {
         element.preventDefault();
 
+        if(newMonth > 12 || newMonth < 1 || newDay > 31 && newDay < 0){
+            alert("Please enter correct date");
+            return false;
+        }
+
         let newStoper = [...stoperArray, [newName, newYear, newMonth, newDay, newTime]]
         setStoperArray(newStoper);
     }
@@ -49,8 +54,6 @@ export function FormSection({ stoperArray, setStoperArray, user }) {
         setNewDay("");
     }
 
-    console.log(stoperArray);
-
     return (
         <aside className="Form-Section">
 
@@ -61,7 +64,7 @@ export function FormSection({ stoperArray, setStoperArray, user }) {
                 <input
                     type="text"
                     name="taskName"
-                    placeholder="task"
+                    placeholder="Task"
                     onChange={validateName}
                     value={newName}
                 />

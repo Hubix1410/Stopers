@@ -24,8 +24,8 @@ export function App() {
                         <RegisterPage stoperArray={stoperArray} setStoperArray={setStoperArray} user={user} setUser={setUser}/>
                     </Route>
                     <Route exact path="/main">
-                        <FormSection stoperArray={stoperArray} setStoperArray={setStoperArray} user={user} setUser={setUser}/>
-                        <StoperSection stoperArray={stoperArray} setStoperArray={setStoperArray} user={user} setUser={setUser}/>
+                        <FormSection stoperArray={stoperArray} setStoperArray={setStoperArray} />
+                        <StoperSection stoperArray={stoperArray} setStoperArray={setStoperArray} />
                     </Route>
                 </Switch>
             </BrowserRouter >

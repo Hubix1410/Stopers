@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc, getFirestore, getDoc } from "firebase/firestore"; 
+import { doc, getFirestore, getDoc } from "firebase/firestore"; 
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -74,7 +74,7 @@ export function LoginPage({ stoperArray, setStoperArray, user, setUser }) {
 
             <div className="Login-To-Register">
                 Do not have an account?
-                <Link to="/register">Register here</Link>
+                <Link to="/register"><span> Register here. </span></Link>
             </div>
         </section>
     )

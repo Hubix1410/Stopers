@@ -30,8 +30,6 @@ export function Stoper({ element, index, stoperArray, setStoperArray }) {
             deleteTask(index)
         }
 
-        console.log(time/1000);
-
         let years = Math.floor(time / 31536000000);
         let months = Math.floor(time % 31536000000 / (2629746000));
         let days = Math.floor(time % 2629746000 / (86400000));

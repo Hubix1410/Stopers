@@ -1,12 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc, getFirestore, getDoc } from "firebase/firestore";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import "./registerPage.scss"
 
-export function RegisterPage({ stoperArray, setStoperArray, user, setUser }) {
+export function RegisterPage({ setUser }) {
 
     const [email, SetEmail] = useState("");
     const [pass, SetPass] = useState("");
@@ -24,7 +23,6 @@ export function RegisterPage({ stoperArray, setStoperArray, user, setUser }) {
     };
 
     const app = initializeApp(firebaseConfig);
-    const db = getFirestore();
 
     function emailValidation(element) {
         SetEmail(element.target.value);
@@ -50,14 +48,12 @@ export function RegisterPage({ stoperArray, setStoperArray, user, setUser }) {
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, pass)
             .then((userCredential) => {
-                const user1 = userCredential.user;
 
                 setUser(userCredential.user);
 
                 history.push("/main");
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
                 alert(errorMessage);
             });
